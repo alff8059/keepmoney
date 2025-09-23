@@ -114,7 +114,7 @@ function calcBalanceUntil(date) {
     const spent = getTotalSpent(key);
     const budget = DAILY_BUDGET + carry;
     const left = budget - spent;
-    carry = left > 0 ? left : 0;
+    carry = left;
     d.setDate(d.getDate() + 1);
   }
   return carry;
@@ -171,6 +171,17 @@ addExpenseBtn.onclick = () => {
     alert("금액을 입력해 주세요!");
     return;
   }
+
+  const d = parseISO(currentKey);
+  const balance = calcBalanceUntil(d);
+
+  if (amount > balance) {
+    const ok = confirm(
+      `잔여금(${balance.toLocaleString()}원)보다 큰 금액입니다. 등록하시겠습니까?`
+    );
+    if (!ok) return;
+  }
+
   const items = getItems(currentKey);
   items.push({ item, amount });
   expenses[currentKey] = items;
@@ -221,8 +232,19 @@ function render() {
     balEl.className = "balance";
     balEl.textContent = balance.toLocaleString() + "원";
 
+    if (balance < 0) {
+      balEl.style.color = "red";
+      balEl.style.fontWeight = "bold";
+    }
+
     div.appendChild(dateEl);
     div.appendChild(balEl);
+
+    // --- 오늘 날짜 표시 ---
+    const todayKey = fmt(new Date());
+    if (key === todayKey) {
+      div.classList.add("today");
+    }
 
     div.addEventListener("click", () => showDetail(key, div));
     grid.appendChild(div);
@@ -251,3 +273,13 @@ nextBtn.addEventListener("click", () => {
 });
 
 render();
+
+/* ---------- Enter 키로 추가 ---------- */
+[newItemInput, newAmountInput].forEach((input) => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addExpenseBtn.click();
+    }
+  });
+});

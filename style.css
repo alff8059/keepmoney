@@ -18,6 +18,7 @@ body {
   padding: 12px;
   background: #8e9ae6; /* 메인컬러 */
   color: white;
+  height: 25px;
 }
 .topbar button {
   background: transparent;
@@ -75,7 +76,7 @@ body {
 }
 .cell {
   background: white;
-  min-height: 70px;
+  min-height: 60px;
   padding: 6px;
   display: flex;
   flex-direction: column;

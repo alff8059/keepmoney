@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가계부</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <button id="prevMonth">‹</button>
+      <h1 id="monthLabel"></h1>
+      <button id="nextMonth">›</button>
+    </header>
+
+    <!-- 초기화 버튼 -->
+    <div id="resetWrap">
+      <button id="resetBtn">전체 초기화</button>
+    </div>
+
+    <main class="container">
+      <div class="weekdays">
+        <div>일</div>
+        <div>월</div>
+        <div>화</div>
+        <div>수</div>
+        <div>목</div>
+        <div>금</div>
+        <div>토</div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </main>
+
+    <!-- 고정된 지출 내역 영역 -->
+    <section id="detail">
+      <h2 id="detailDate">날짜를 선택하세요</h2>
+      <div id="totalSpent"></div>
+      <ul id="expenseList"></ul>
+    </section>
+
+    <!-- 하단 고정 입력폼 -->
+    <div id="inputForm">
+      <input type="text" id="newItem" placeholder="항목 (선택)" />
+      <input type="number" id="newAmount" placeholder="금액" />
+      <button id="addExpenseBtn">추가</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

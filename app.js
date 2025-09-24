@@ -188,6 +188,8 @@ addExpenseBtn.onclick = () => {
   saveExpenses();
   render();
   showDetail(currentKey, document.querySelector(`[data-key="${currentKey}"]`));
+  // ✅ 항목 추가 후 스크롤을 맨 아래로 이동
+  expenseList.scrollTop = expenseList.scrollHeight;
 };
 
 /* ---------- 전체 초기화 ---------- */

@@ -76,7 +76,7 @@ body {
 }
 .cell {
   background: white;
-  min-height: 70px;
+  min-height: 55px;
   padding: 6px;
   display: flex;
   flex-direction: column;

@@ -19,6 +19,7 @@ body {
   padding: 12px;
   background: #8e9ae6; /* 메인컬러 */
   color: white;
+  height: 25px;
 }
 .topbar button {
   background: transparent;

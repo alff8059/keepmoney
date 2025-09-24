@@ -232,7 +232,7 @@ function render() {
 
     const balEl = document.createElement("div");
     balEl.className = "balance";
-    balEl.textContent = balance.toLocaleString() + "원";
+    balEl.textContent = balance.toLocaleString();
 
     if (balance < 0) {
       balEl.style.color = "red";

@@ -86,7 +86,7 @@ body {
   border: 1px solid #eee;
 }
 .cell.blank {
-  background: #f9f9f9; /* 빈칸은 흐린 회색 */
+  background: #eeeeee; /* 빈칸은 흐린 회색 */
   cursor: default;
 }
 .cell.selected {
@@ -193,4 +193,66 @@ body {
 }
 #addExpenseBtn:hover {
   background: #6c78d8;
+}
+
+/* 모달 공통 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* 금액 재설정 모달 버튼 */
+#budgetModal .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+#budgetModal .btn-group button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+#budgetOnlyBtn {
+  background: #8e9ae6;
+  color: white;
+}
+#budgetOnlyBtn:hover {
+  background: #6c78d8;
+}
+#budgetResetAllBtn {
+  background: #e57373;
+  color: white;
+}
+#budgetResetAllBtn:hover {
+  background: #d84343;
+}
+#budgetCancelBtn {
+  background: #ccc;
+  color: #333;
+}
+#budgetCancelBtn:hover {
+  background: #aaa;
 }

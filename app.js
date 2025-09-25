@@ -159,23 +159,21 @@ function showDetail(key, cellEl) {
   newAmountInput.value = "";
 }
 
-/* ---------- 지출 추가 ---------- */
-addExpenseBtn.onclick = () => {
+function addExpense(item, amount) {
   if (!currentKey) {
     alert("먼저 날짜를 선택하세요!");
     return;
   }
-  const item = newItemInput.value.trim();
-  const amount = parseInt(newAmountInput.value, 10);
-  if (isNaN(amount) || amount <= 0) {
-    alert("금액을 입력해 주세요!");
+  const parsedAmount = parseInt(amount, 10);
+  if (isNaN(parsedAmount) || parsedAmount <= 0) {
+    alert("금액을 올바르게 입력하세요!");
     return;
   }
 
   const d = parseISO(currentKey);
   const balance = calcBalanceUntil(d);
 
-  if (amount > balance) {
+  if (parsedAmount > balance) {
     const ok = confirm(
       `잔여금(${balance.toLocaleString()}원)보다 큰 금액입니다. 등록하시겠습니까?`
     );
@@ -183,24 +181,66 @@ addExpenseBtn.onclick = () => {
   }
 
   const items = getItems(currentKey);
-  items.push({ item, amount });
+  items.push({ item: item.trim(), amount: parsedAmount });
   expenses[currentKey] = items;
   saveExpenses();
   render();
   showDetail(currentKey, document.querySelector(`[data-key="${currentKey}"]`));
-  // ✅ 항목 추가 후 스크롤을 맨 아래로 이동
+
+  // 스크롤 맨 아래로
   expenseList.scrollTop = expenseList.scrollHeight;
+}
+
+// 기존 버튼 클릭 → addExpense 호출
+addExpenseBtn.onclick = () => {
+  addExpense(newItemInput.value, newAmountInput.value);
 };
 
 /* ---------- 전체 초기화 ---------- */
+// 모달 열기
 resetBtn.addEventListener("click", () => {
+  document.getElementById("budgetModal").style.display = "block";
+});
+
+// 모달 닫기 함수
+function closeBudgetModal() {
+  document.getElementById("budgetModal").style.display = "none";
+}
+
+// 금액만 재설정
+document.getElementById("budgetOnlyBtn").onclick = () => {
+  const input = prompt("새 하루 사용 금액을 입력하세요:", DAILY_BUDGET);
+  const budget = parseInt(input, 10);
+  if (!isNaN(budget) && budget > 0) {
+    DAILY_BUDGET = budget;
+    localStorage.setItem(LS_BUDGET, DAILY_BUDGET);
+    alert(`하루 사용 금액이 ${budget.toLocaleString()}원으로 변경되었습니다.`);
+    render();
+  } else {
+    alert("올바른 숫자를 입력하세요.");
+  }
+  closeBudgetModal();
+};
+
+// 금액 + 전체 초기화
+document.getElementById("budgetResetAllBtn").onclick = () => {
   if (confirm("정말 전체 초기화할까요? 모든 내역과 설정이 삭제됩니다.")) {
     localStorage.removeItem(LS_KEY);
     localStorage.removeItem(LS_START);
     localStorage.removeItem(LS_BUDGET);
     location.reload();
   }
-});
+  closeBudgetModal();
+};
+
+// 취소
+document.getElementById("budgetCancelBtn").onclick = closeBudgetModal;
+
+// 바깥 영역 클릭 시 닫기
+window.onclick = (e) => {
+  const modal = document.getElementById("budgetModal");
+  if (e.target === modal) closeBudgetModal();
+};
 
 /* ---------- 달력 렌더 ---------- */
 function render() {

@@ -1,0 +1,86 @@
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 25px;
+  background: #8e9ae6;
+  color: #4b4ecb;
+  margin-right: 4px;
+  height: 35px;
+}
+.fav-btn .icon svg {
+  width: 18px;
+  height: 18px;
+}
+.fav-btn:hover {
+  background: #cfd6f7;
+}
+
+/* 즐겨찾기 열기 버튼 */
+
+/* 즐겨찾기 리스트 */
+#favoriteList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+.favorite-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.favorite-btn {
+  flex: 1;
+  padding: 6px 8px;
+  background: #eff2ff;
+  border: 1px solid #8e9ae6;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+.favorite-btn:hover {
+  background: #cfd6f7;
+}
+.fav-del {
+  margin-left: 6px;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+}
+.fav-del:hover {
+  color: red;
+}
+
+/* 추가 폼 */
+#favAddForm {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+#favAddForm input {
+  flex: 1;
+  padding: 2px 10px;
+  height: 35px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 13px;
+  width: 40%;
+  margin-right: 4px;
+}
+#favAddBtn {
+  padding: 4px 8px;
+  background: #8e9ae6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#favAddBtn:hover {
+  background: #6c78d8;
+}

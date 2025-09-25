@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가계부</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="favorite.css" />
   </head>
   <body>
     <header class="topbar">
@@ -40,11 +41,74 @@
 
     <!-- 하단 고정 입력폼 -->
     <div id="inputForm">
+      <button class="fav-btn" id="openFavoritesBtn">
+        <span class="icon"
+          ><svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <!-- 체크박스 + 체크 -->
+            <rect x="3" y="4" width="5" height="5" rx="1.2"></rect>
+            <polyline points="4.2,7 5.6,8.4 8.2,5.8"></polyline>
+            <!-- 텍스트 라인 -->
+            <line x1="11" y1="6.5" x2="21" y2="6.5"></line>
+
+            <rect x="3" y="11" width="5" height="5" rx="1.2"></rect>
+            <polyline points="4.2,14 5.6,15.4 8.2,12.8"></polyline>
+            <line x1="11" y1="13.5" x2="21" y2="13.5"></line>
+
+            <rect x="3" y="18" width="5" height="5" rx="1.2"></rect>
+            <polyline points="4.2,21 5.6,22.4 8.2,19.8"></polyline>
+            <line x1="11" y1="20.5" x2="21" y2="20.5"></line>
+          </svg>
+        </span>
+      </button>
       <input type="text" id="newItem" placeholder="항목 (선택)" />
       <input type="number" id="newAmount" placeholder="금액" />
       <button id="addExpenseBtn">추가</button>
     </div>
 
+    <!-- 즐겨찾기 팝업 -->
+    <div id="favoritesModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeFavorites">&times;</span>
+        <h3>자주 쓰는 항목</h3>
+        <div id="favoriteList"></div>
+
+        <div id="favAddForm">
+          <input type="text" id="favItem" placeholder="항목명" />
+          <input
+            type="number"
+            id="favAmount"
+            placeholder="금액"
+            inputmode="numeric"
+          />
+          <button id="favAddBtn">+추가</button>
+        </div>
+      </div>
+    </div>
+    <!-- 금액 재설정 모달 -->
+    <div id="budgetModal" class="modal">
+      <div class="modal-content">
+        <h3>금액 재설정</h3>
+        <p>재설정 범위를 선택해 주세요.</p>
+        <div class="btn-group">
+          <button id="budgetOnlyBtn">금액만 재설정</button>
+          <button id="budgetResetAllBtn">금액 재설정 + 전체 초기화</button>
+          <button id="budgetCancelBtn">취소</button>
+        </div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
+    <script src="favorite.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
   </body>
 </html>

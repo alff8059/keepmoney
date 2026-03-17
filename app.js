@@ -175,7 +175,7 @@ function addExpense(item, amount) {
 
   if (parsedAmount > balance) {
     const ok = confirm(
-      `잔여금(${balance.toLocaleString()}원)보다 큰 금액입니다. 등록하시겠습니까?`
+      `잔여금(${balance.toLocaleString()}원)보다 큰 금액입니다. 등록하시겠습니까?`,
     );
     if (!ok) return;
   }
@@ -276,7 +276,6 @@ function render() {
 
     if (balance < 0) {
       balEl.style.color = "red";
-      balEl.style.fontWeight = "bold";
     }
 
     div.appendChild(dateEl);

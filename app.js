@@ -81,7 +81,7 @@ const newAmountInput = document.getElementById("newAmount");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-let currentKey = null;
+let currentKey = today;
 let selectedCell = null;
 
 /* ---------- 달력 유틸 ---------- */

@@ -6,6 +6,27 @@ let expenses = loadExpenses();
 let startDate = localStorage.getItem(LS_START);
 let DAILY_BUDGET = parseInt(localStorage.getItem(LS_BUDGET), 10) || null;
 
+/* ---------- 전역 상태 ---------- */
+let today = new Date();
+let viewYear = today.getFullYear();
+let viewMonth = today.getMonth();
+
+const monthLabel = document.getElementById("monthLabel");
+const grid = document.getElementById("grid");
+const prevBtn = document.getElementById("prevMonth");
+const nextBtn = document.getElementById("nextMonth");
+
+const detailDate = document.getElementById("detailDate");
+const totalSpentEl = document.getElementById("totalSpent");
+const expenseList = document.getElementById("expenseList");
+const newItemInput = document.getElementById("newItem");
+const newAmountInput = document.getElementById("newAmount");
+const addExpenseBtn = document.getElementById("addExpenseBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+let currentKey = null;
+let selectedCell = null;
+
 /* ---------- 앱 처음 실행 시: 하루 사용금액 설정 ---------- */
 if (!DAILY_BUDGET || !startDate) {
   const input = prompt("하루 사용 금액을 설정하세요 (원):", "10000");
@@ -74,27 +95,6 @@ function parseISO(s) {
   const [y, m, day] = s.split("-").map(Number);
   return new Date(y, m - 1, day);
 }
-
-/* ---------- 전역 상태 ---------- */
-let today = new Date();
-let viewYear = today.getFullYear();
-let viewMonth = today.getMonth();
-
-const monthLabel = document.getElementById("monthLabel");
-const grid = document.getElementById("grid");
-const prevBtn = document.getElementById("prevMonth");
-const nextBtn = document.getElementById("nextMonth");
-
-const detailDate = document.getElementById("detailDate");
-const totalSpentEl = document.getElementById("totalSpent");
-const expenseList = document.getElementById("expenseList");
-const newItemInput = document.getElementById("newItem");
-const newAmountInput = document.getElementById("newAmount");
-const addExpenseBtn = document.getElementById("addExpenseBtn");
-const resetBtn = document.getElementById("resetBtn");
-
-let currentKey = null;
-let selectedCell = null;
 
 /* ---------- 달력 유틸 ---------- */
 function buildMonth(year, month) {

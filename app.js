@@ -24,6 +24,18 @@ if (!DAILY_BUDGET || !startDate) {
     startDate = fmt(today);
     localStorage.setItem(LS_START, startDate);
   }
+} else {
+  const todayKey = fmt(new Date());
+  const todayCell = document.querySelector(`[data-key="${todayKey}"]`);
+
+  if (todayCell) {
+    // 오늘 날짜가 현재 달력 화면에 있는 경우 (예: 이번 달인 경우)
+    showDetail(todayKey, todayCell);
+  } else {
+    // 오늘 날짜가 달력 화면에 없더라도(다른 달을 보고 있을 때 등)
+    // 데이터 상으로는 오늘을 기본 선택 상태로 유지
+    showDetail(todayKey, null);
+  }
 }
 
 /* ---------- 마이그레이션 ---------- */
@@ -81,7 +93,7 @@ const newAmountInput = document.getElementById("newAmount");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-let currentKey = today;
+let currentKey = null;
 let selectedCell = null;
 
 /* ---------- 달력 유틸 ---------- */

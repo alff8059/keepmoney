@@ -1,0 +1,95 @@
+/* ---------- 로그인/회원가입 오버레이 ---------- */
+#authOverlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2fb; /* 전체 배경색과 통일 */
+}
+
+.auth-container {
+  width: 90%;
+  max-width: 360px;
+  background: white;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(142, 154, 230, 0.2);
+  text-align: center;
+}
+
+.auth-container h2 {
+  color: #6c78d8;
+  margin-bottom: 25px;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.auth-input-group {
+  margin-bottom: 20px;
+}
+
+.auth-input-group input {
+  width: 100%;
+  height: 45px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.auth-input-group input:focus {
+  border-color: #8e9ae6;
+  box-shadow: 0 0 0 2px rgba(142, 154, 230, 0.1);
+}
+
+.auth-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-btn-group button {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    background 0.2s;
+}
+
+.auth-btn-group button:active {
+  transform: scale(0.98);
+}
+
+#loginBtn {
+  background: #8e9ae6;
+  color: white;
+}
+
+#loginBtn:hover {
+  background: #6c78d8;
+}
+
+#signupBtn {
+  background: white;
+  color: #8e9ae6;
+  border: 1px solid #8e9ae6;
+}
+
+#signupBtn:hover {
+  background: #f8f9ff;
+}
+
+#authMsg {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #e57373;
+  min-height: 18px; /* 메시지 없을 때도 높이 유지 */
+}

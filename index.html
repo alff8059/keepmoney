@@ -8,8 +8,10 @@
     />
     <link rel="icon" type="image/png" href="/icon.png" />
     <title>keep my money!</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="favorite.css" />
+    <link rel="stylesheet" href="css/style.css?version=1.0.1" />
+    <link rel="stylesheet" href="css/favorite.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213724030939144"
@@ -115,7 +117,36 @@
         </div>
       </div>
     </div>
+    <div
+      id="authOverlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+      "
+    >
+      <div class="auth-container">
+        <h2 id="authTitle">Keep my money!</h2>
+        <div class="auth-input-group">
+          <input type="number" id="authUserId" placeholder="사용자 ID" />
+        </div>
+        <div class="auth-btn-group">
+          <button id="loginBtn">로그인</button>
+          <button id="signupBtn">새 계정 만들기</button>
+        </div>
+        <p id="authMsg"></p>
+      </div>
+    </div>
 
+    <div
+      id="mainApp"
+      style="display: none; height: 100%; flex-direction: column"
+    ></div>
+    <script src="db.js"></script>
     <script src="app.js"></script>
     <script src="favorite.js"></script>
     <script src="jquery-3.7.1.min.js"></script>

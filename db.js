@@ -6,6 +6,10 @@ const _supabase = createClient(
 
 // 예: 데이터 불러오기
 async function getExpenses() {
-  const { data, error } = await _supabase.from("expenses").select("*");
+  const { data, error } = await _supabase.from("expense").select("*");
   console.log(data); // DB에 저장된 가계부 내역이 출력됨!
+}
+async function getUsers() {
+  const { data, error } = await _supabase.from("user").select("*");
+  console.log(data);
 }

@@ -33,6 +33,65 @@ body {
   min-height: 56px;
   flex: 0 0 auto;
 }
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 40px;
+}
+
+.icon-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: white;
+}
+
+.month-nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* 화살표를 월 텍스트 쪽으로 당김 */
+}
+
+.month-arrow {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+#monthLabel {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.topbar-spacer {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
 .topbar button {
   background: transparent;
   border: none;
@@ -106,13 +165,13 @@ body {
 
 .cell {
   background: white;
-  min-height: 72px;
+  min-height: 65px;
   padding: 6px 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  border: 1px solid #eee;
+  border: none;
   min-width: 0;
   overflow: hidden;
 }
@@ -333,6 +392,99 @@ body {
   background: #aaa;
 }
 
+/* 사이드 메뉴 */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+  z-index: 300;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(82vw, 300px);
+  height: 100%;
+  background: #fff;
+  /* box-shadow: 4px 0 20px rgba(0, 0, 0, 0.18); */
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+  z-index: 400;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-top {
+  min-height: 56px;
+  padding: 12px 14px;
+  background: #8e9ae6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side-menu-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.side-close-btn {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.side-menu-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 14px;
+}
+
+.side-menu-bottom {
+  padding: 14px;
+  border-top: 1px solid #ececec;
+}
+
+#logoutBtn {
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #e57373;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#logoutBtn:hover {
+  background: #d84343;
+}
+
 /* 모바일 미세 조정 */
 @media (max-width: 480px) {
   .topbar {
@@ -384,5 +536,28 @@ body {
     height: 38px;
     font-size: 13px;
     padding: 0 10px;
+  }
+  .month-nav {
+    gap: 6px;
+  }
+
+  .month-arrow {
+    font-size: 20px;
+    padding: 2px 5px;
+  }
+
+  .icon-btn,
+  .topbar-spacer {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .icon-btn span {
+    width: 16px;
+  }
+
+  .side-menu {
+    width: min(84vw, 280px);
   }
 }

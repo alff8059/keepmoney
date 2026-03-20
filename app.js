@@ -24,6 +24,13 @@ const newAmountInput = document.getElementById("newAmount");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
+const menuBtn = document.getElementById("menuBtn");
+const closeMenuBtn = document.getElementById("closeMenuBtn");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+const logoutBtn = document.getElementById("logoutBtn");
+const authOverlay = document.getElementById("authOverlay");
+
 let currentKey = null;
 let selectedCell = null;
 
@@ -324,7 +331,37 @@ nextBtn.addEventListener("click", () => {
   } else viewMonth++;
   render();
 });
+function openMenu() {
+  sideMenu.classList.add("open");
+  menuOverlay.classList.add("show");
+  sideMenu.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
 
+function closeMenu() {
+  sideMenu.classList.remove("open");
+  menuOverlay.classList.remove("show");
+  sideMenu.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+if (menuBtn) {
+  menuBtn.addEventListener("click", openMenu);
+}
+
+if (closeMenuBtn) {
+  closeMenuBtn.addEventListener("click", closeMenu);
+}
+
+if (menuOverlay) {
+  menuOverlay.addEventListener("click", closeMenu);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeMenu();
+  }
+});
 render();
 
 /* ---------- Enter 키로 추가 ---------- */

@@ -147,27 +147,36 @@
         </div>
       </div>
     </div>
+    <!-- auth overlay: email + password -->
     <div
       id="authOverlay"
-      style="
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-      "
+      style="display: none; position: fixed; inset: 0; z-index: 9999"
     >
       <div class="auth-container">
         <h2 id="authTitle">Keep my money!</h2>
+
         <div class="auth-input-group">
-          <input type="number" id="authUserId" placeholder="사용자 ID" />
+          <input
+            type="email"
+            id="authEmail"
+            placeholder="이메일"
+            autocomplete="username"
+          />
         </div>
+        <div class="auth-input-group">
+          <input
+            type="password"
+            id="authPassword"
+            placeholder="비밀번호"
+            autocomplete="current-password"
+          />
+        </div>
+
         <div class="auth-btn-group">
           <button id="loginBtn">로그인</button>
-          <button id="signupBtn">새 계정 만들기</button>
+          <button id="signupBtn">회원가입</button>
         </div>
+
         <p id="authMsg"></p>
       </div>
     </div>
@@ -201,9 +210,9 @@
         </div>
       </div>
     </aside>
-    <script src="db.js"></script>
-    <script src="app.js"></script>
-    <script src="favorite.js"></script>
-    <script src="jquery-3.7.1.min.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/favorite.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
   </body>
 </html>
